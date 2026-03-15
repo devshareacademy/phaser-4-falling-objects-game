@@ -1,0 +1,275 @@
+{
+	"frames": {
+		"button1.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 200,
+				"h": 200
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 200,
+				"h": 200
+			},
+			"sourceSize": {
+				"w": 200,
+				"h": 200
+			}
+		},
+		"button2.png": {
+			"frame": {
+				"x": 203,
+				"y": 1,
+				"w": 200,
+				"h": 200
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 200,
+				"h": 200
+			},
+			"sourceSize": {
+				"w": 200,
+				"h": 200
+			}
+		},
+		"button3.png": {
+			"frame": {
+				"x": 405,
+				"y": 1,
+				"w": 200,
+				"h": 200
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 200,
+				"h": 200
+			},
+			"sourceSize": {
+				"w": 200,
+				"h": 200
+			}
+		},
+		"button4.png": {
+			"frame": {
+				"x": 1,
+				"y": 203,
+				"w": 200,
+				"h": 200
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 200,
+				"h": 200
+			},
+			"sourceSize": {
+				"w": 200,
+				"h": 200
+			}
+		},
+		"button5.png": {
+			"frame": {
+				"x": 203,
+				"y": 203,
+				"w": 200,
+				"h": 200
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 200,
+				"h": 200
+			},
+			"sourceSize": {
+				"w": 200,
+				"h": 200
+			}
+		},
+		"needle_pin1.png": {
+			"frame": {
+				"x": 607,
+				"y": 1,
+				"w": 9,
+				"h": 250
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 9,
+				"h": 250
+			},
+			"sourceSize": {
+				"w": 9,
+				"h": 250
+			}
+		},
+		"needle_pin2.png": {
+			"frame": {
+				"x": 405,
+				"y": 203,
+				"w": 42,
+				"h": 250
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 42,
+				"h": 250
+			},
+			"sourceSize": {
+				"w": 42,
+				"h": 250
+			}
+		},
+		"needle_pin3.png": {
+			"frame": {
+				"x": 449,
+				"y": 203,
+				"w": 42,
+				"h": 250
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 42,
+				"h": 250
+			},
+			"sourceSize": {
+				"w": 42,
+				"h": 250
+			}
+		},
+		"needle_pin4.png": {
+			"frame": {
+				"x": 493,
+				"y": 203,
+				"w": 51,
+				"h": 250
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 51,
+				"h": 250
+			},
+			"sourceSize": {
+				"w": 51,
+				"h": 250
+			}
+		},
+		"needle_pin5.png": {
+			"frame": {
+				"x": 546,
+				"y": 203,
+				"w": 42,
+				"h": 250
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 42,
+				"h": 250
+			},
+			"sourceSize": {
+				"w": 42,
+				"h": 250
+			}
+		},
+		"thread1.png": {
+			"frame": {
+				"x": 618,
+				"y": 1,
+				"w": 200,
+				"h": 248
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 200,
+				"h": 248
+			},
+			"sourceSize": {
+				"w": 200,
+				"h": 248
+			}
+		},
+		"thread2.png": {
+			"frame": {
+				"x": 618,
+				"y": 251,
+				"w": 200,
+				"h": 248
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 200,
+				"h": 248
+			},
+			"sourceSize": {
+				"w": 200,
+				"h": 248
+			}
+		},
+		"thread3.png": {
+			"frame": {
+				"x": 1,
+				"y": 501,
+				"w": 200,
+				"h": 248
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 200,
+				"h": 248
+			},
+			"sourceSize": {
+				"w": 200,
+				"h": 248
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 819,
+			"h": 750
+		},
+		"scale": "1"
+	}
+}

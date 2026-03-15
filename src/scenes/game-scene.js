@@ -16,7 +16,7 @@ export class GameScene extends Phaser.Scene {
    * @returns {void}
    */
   create() {
-    // show image we loaded in the preload scene
-    this.add.image(this.scale.width / 2, this.scale.height / 2, ASSET_KEYS.LOGO);
+    // add game background
+    this.add.image(this.scale.width / 2, this.scale.height / 2, ASSET_KEYS.BACKGROUND);
   }
 }
