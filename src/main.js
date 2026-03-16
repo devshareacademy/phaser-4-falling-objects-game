@@ -2,6 +2,7 @@ import Phaser from './lib/phaser.js';
 import { SCENE_KEYS } from './common/scene-keys.js';
 import { GameScene } from './scenes/game-scene.js';
 import { PreloadScene } from './scenes/preload-scene.js';
+import { DebugDrawPlugin } from './plugins/debug-draw/debug-draw-pluging.js';
 
 /** @type {Phaser.Types.Core.GameConfig} */
 const gameConfig = {
@@ -16,6 +17,9 @@ const gameConfig = {
     mode: Phaser.Scale.FIT,
   },
   backgroundColor: '#000000',
+  plugins: {
+    scene: [{ key: 'DebugDrawPlugin', plugin: DebugDrawPlugin, mapping: 'debugDraw' }],
+  },
 };
 
 const game = new Phaser.Game(gameConfig);

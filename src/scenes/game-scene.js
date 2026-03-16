@@ -9,6 +9,12 @@ export class GameScene extends Phaser.Scene {
   #player;
   /** @type {number} how fast our player can move in our game */
   #playerSpeed;
+  /** @type {Phaser.GameObjects.Image[]} the falling objects for the player to collect */
+  #fallingObjects;
+  /** @type {string[]} the list of frames from the falling object spritesheet that we loaded in */
+  #fallingObjectFrames;
+  /** @type {number} how fast the objects will fall */
+  #fallingObjectsSpeed;
 
   constructor() {
     super({
@@ -24,6 +30,7 @@ export class GameScene extends Phaser.Scene {
    */
   init() {
     this.#playerSpeed = 5;
+    this.#fallingObjectsSpeed = 2;
   }
 
   /**
@@ -44,7 +51,7 @@ export class GameScene extends Phaser.Scene {
     // add game background
     this.add.image(width / 2, height / 2, ASSET_KEYS.BACKGROUND);
     // add player
-    this.#player = this.add.image(width / 2, height, ASSET_KEYS.JAR);
+    this.#player = this.add.image(width / 2, height, ASSET_KEYS.JAR).setDepth(1);
 
     /*
     // example of how display width uses our scaling
@@ -53,11 +60,22 @@ export class GameScene extends Phaser.Scene {
     console.log(this.#player.width, this.#player.displayWidth);
     */
 
-    // add a collectable object
-    this.add.image(width / 2, height / 2, ASSET_KEYS.OBJECTS, 'button1.png').setScale(0.75);
-
     // adds support for keyboard input in our game (arrow keys, enter, and shift)
     this.#cursorKeys = this.input.keyboard.createCursorKeys();
+
+    // keep track of the falling objects the player collects
+    this.#fallingObjects = [];
+    this.#fallingObjectFrames = Object.keys(this.textures.get(ASSET_KEYS.OBJECTS).frames).filter(
+      (name) => name !== '__BASE', // base is a default frame added by phaser
+    );
+
+    // time event to spawn objects
+    this.time.addEvent({
+      delay: 1000,
+      loop: true,
+      callback: this.#spawnFallingObject,
+      callbackScope: this,
+    });
   }
 
   /**
@@ -80,5 +98,25 @@ export class GameScene extends Phaser.Scene {
     } else if (this.#player.x + this.#player.displayWidth / 2 > this.scale.width) {
       this.#player.x = this.scale.width - this.#player.displayWidth / 2;
     }
+
+    // move the objects down the screen and remove them when they are off screen
+    for (let i = this.#fallingObjects.length - 1; i >= 0; i--) {
+      const obj = this.#fallingObjects[i];
+      obj.y += this.#fallingObjectsSpeed;
+
+      if (obj.y > this.scale.height) {
+        obj.destroy();
+        this.#fallingObjects.splice(i, 1);
+      }
+    }
+  }
+
+  #spawnFallingObject() {
+    const randomFrame = Phaser.Utils.Array.GetRandom(this.#fallingObjectFrames);
+    const obj = this.add
+      .image(Phaser.Math.RND.between(50, this.scale.width - 50), -20, ASSET_KEYS.OBJECTS, randomFrame)
+      .setScale(0.75);
+    this.#fallingObjects.push(obj);
+    console.log(this.#fallingObjects.length);
   }
 }
