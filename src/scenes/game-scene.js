@@ -104,6 +104,14 @@ export class GameScene extends Phaser.Scene {
       const obj = this.#fallingObjects[i];
       obj.y += this.#fallingObjectsSpeed;
 
+      // check to see if object overlaps with player
+      const overlapPoints = Phaser.Geom.Intersects.GetRectangleToRectangle(this.#player.getBounds(), obj.getBounds());
+      // object is overlapping
+      if (overlapPoints.length > 0) {
+        obj.destroy();
+        this.#fallingObjects.splice(i, 1);
+      }
+
       if (obj.y > this.scale.height) {
         obj.destroy();
         this.#fallingObjects.splice(i, 1);
