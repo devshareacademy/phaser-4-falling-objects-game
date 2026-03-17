@@ -15,6 +15,10 @@ export class GameScene extends Phaser.Scene {
   #fallingObjectFrames;
   /** @type {number} how fast the objects will fall */
   #fallingObjectsSpeed;
+  /** @type {number} how many points the player has earned from collecting objects */
+  #score;
+  /** @type {Phaser.GameObjects.Text} the visual representation of the players score */
+  #scoreTextGameObject;
 
   constructor() {
     super({
@@ -31,6 +35,7 @@ export class GameScene extends Phaser.Scene {
   init() {
     this.#playerSpeed = 5;
     this.#fallingObjectsSpeed = 2;
+    this.#score = 0;
   }
 
   /**
@@ -76,6 +81,21 @@ export class GameScene extends Phaser.Scene {
       callback: this.#spawnFallingObject,
       callbackScope: this,
     });
+
+    // show player the score they have earned
+    const textConfig = {
+      fontSize: '40px',
+      color: '#043D8C',
+      stroke: '#ffffff',
+      strokeThickness: 6,
+    };
+    const scoreTextPrefix = this.add.text(10, 10, 'Score:', textConfig);
+    this.#scoreTextGameObject = this.add.text(
+      scoreTextPrefix.x + scoreTextPrefix.width,
+      10,
+      this.#score.toString(10),
+      textConfig,
+    );
   }
 
   /**
@@ -110,6 +130,9 @@ export class GameScene extends Phaser.Scene {
       if (overlapPoints.length > 0) {
         obj.destroy();
         this.#fallingObjects.splice(i, 1);
+        // update players score for each object collected
+        this.#score += 10;
+        this.#scoreTextGameObject.setText(this.#score.toString(10));
       }
 
       if (obj.y > this.scale.height) {
