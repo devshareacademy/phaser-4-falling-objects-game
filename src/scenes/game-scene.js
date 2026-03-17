@@ -2,6 +2,13 @@ import Phaser from '../lib/phaser.js';
 import { SCENE_KEYS } from '../common/scene-keys.js';
 import { ASSET_KEYS } from '../common/assets.js';
 
+const textConfig = {
+  fontSize: '40px',
+  color: '#043D8C',
+  stroke: '#ffffff',
+  strokeThickness: 6,
+};
+
 export class GameScene extends Phaser.Scene {
   /** @type {Phaser.Types.Input.Keyboard.CursorKeys} handles player input */
   #cursorKeys;
@@ -19,6 +26,14 @@ export class GameScene extends Phaser.Scene {
   #score;
   /** @type {Phaser.GameObjects.Text} the visual representation of the players score */
   #scoreTextGameObject;
+  /** @type {number} how many times the player has missed collecting the falling objects */
+  #misses;
+  /** @type {number} how many misses before the game ends */
+  #maxMisses;
+  /** @type {boolean} tracks if the game over */
+  #isGameOver;
+  /** @type {Phaser.Time.TimerEvent} timer for spawning objects in the game */
+  #timerEvent;
 
   constructor() {
     super({
@@ -36,6 +51,9 @@ export class GameScene extends Phaser.Scene {
     this.#playerSpeed = 5;
     this.#fallingObjectsSpeed = 2;
     this.#score = 0;
+    this.#misses = 0;
+    this.#maxMisses = 3;
+    this.#isGameOver = false;
   }
 
   /**
@@ -75,7 +93,7 @@ export class GameScene extends Phaser.Scene {
     );
 
     // time event to spawn objects
-    this.time.addEvent({
+    this.#timerEvent = this.time.addEvent({
       delay: 1000,
       loop: true,
       callback: this.#spawnFallingObject,
@@ -83,12 +101,6 @@ export class GameScene extends Phaser.Scene {
     });
 
     // show player the score they have earned
-    const textConfig = {
-      fontSize: '40px',
-      color: '#043D8C',
-      stroke: '#ffffff',
-      strokeThickness: 6,
-    };
     const scoreTextPrefix = this.add.text(10, 10, 'Score:', textConfig);
     this.#scoreTextGameObject = this.add.text(
       scoreTextPrefix.x + scoreTextPrefix.width,
@@ -106,6 +118,10 @@ export class GameScene extends Phaser.Scene {
    * @returns {void}
    */
   update() {
+    if (this.#isGameOver) {
+      return;
+    }
+
     // allow player to move
     if (this.#cursorKeys.left.isDown) {
       this.#player.x -= this.#playerSpeed;
@@ -124,6 +140,8 @@ export class GameScene extends Phaser.Scene {
       const obj = this.#fallingObjects[i];
       obj.y += this.#fallingObjectsSpeed;
 
+      obj.angle += 1;
+
       // check to see if object overlaps with player
       const overlapPoints = Phaser.Geom.Intersects.GetRectangleToRectangle(this.#player.getBounds(), obj.getBounds());
       // object is overlapping
@@ -138,7 +156,14 @@ export class GameScene extends Phaser.Scene {
       if (obj.y > this.scale.height) {
         obj.destroy();
         this.#fallingObjects.splice(i, 1);
+        // increment the number of misses for the player
+        this.#misses++;
       }
+    }
+
+    // if we have reached maxed misses, end the game
+    if (this.#misses >= this.#maxMisses) {
+      this.#handleGameOver();
     }
   }
 
@@ -148,6 +173,15 @@ export class GameScene extends Phaser.Scene {
       .image(Phaser.Math.RND.between(50, this.scale.width - 50), -20, ASSET_KEYS.OBJECTS, randomFrame)
       .setScale(0.75);
     this.#fallingObjects.push(obj);
-    console.log(this.#fallingObjects.length);
+    // console.log(this.#fallingObjects.length);
+  }
+
+  #handleGameOver() {
+    this.#isGameOver = true;
+    this.#timerEvent.remove();
+    this.add.text(this.scale.width / 2, this.scale.height / 2, 'Game Over', textConfig).setOrigin(0.5);
+    this.input.once(Phaser.Input.Events.POINTER_DOWN, () => {
+      this.scene.restart();
+    });
   }
 }
