@@ -16,7 +16,14 @@ export class GameScene extends Phaser.Scene {
    * @returns {void}
    */
   create() {
+    // get scene width and height
+    const { width, height } = this.scale;
+
     // add game background
-    this.add.image(this.scale.width / 2, this.scale.height / 2, ASSET_KEYS.BACKGROUND);
+    this.add.image(width / 2, height / 2, ASSET_KEYS.BACKGROUND);
+    // add player
+    this.add.image(width / 2, height, ASSET_KEYS.JAR);
+    // add object
+    this.add.image(width / 2, height / 2, ASSET_KEYS.OBJECTS, 'button1.png').setScale(0.75);
   }
 }
