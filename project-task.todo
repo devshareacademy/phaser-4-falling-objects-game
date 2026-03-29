@@ -47,10 +47,10 @@ UI & Score:
     ✔ Verify UI updates correctly @done(26-03-29 05:19)
 
 Game Rules:
-    ☐ Create miss counter
-    ☐ Define max misses
-    ☐ Increase misses when objects fall
-    ☐ Check for game over
-    ☐ Stop gameplay when game over
-    ☐ Display game over message
-    ☐ Add restart scene logic
+    ✔ Create miss counter @done(26-03-29 05:45)
+    ✔ Define max misses @done(26-03-29 05:45)
+    ✔ Increase misses when objects fall @done(26-03-29 05:45)
+    ✔ Check for game over @done(26-03-29 05:45)
+    ✔ Stop gameplay when game over @done(26-03-29 05:45)
+    ✔ Display game over message @done(26-03-29 05:45)
+    ✔ Add restart scene logic @done(26-03-29 05:45)
