@@ -39,12 +39,12 @@ Collisions:
     ✔ Verify collisions visually @done(26-03-29 05:03)
 
 UI & Score:
-    ☐ Create score variable
-    ☐ Add score text to screen
-    ☐ Increase score on catch
-    ☐ Update UI text when score changes
-    ☐ Position score on screen
-    ☐ Verify UI updates correctly
+    ✔ Create score variable @done(26-03-29 05:19)
+    ✔ Add score text to screen @done(26-03-29 05:19)
+    ✔ Increase score on catch @done(26-03-29 05:19)
+    ✔ Update UI text when score changes @done(26-03-29 05:19)
+    ✔ Position score on screen @done(26-03-29 05:19)
+    ✔ Verify UI updates correctly @done(26-03-29 05:19)
 
 Game Rules:
     ☐ Create miss counter
