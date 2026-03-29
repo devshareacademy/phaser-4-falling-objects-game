@@ -33,10 +33,10 @@ Falling Objects:
     ✔ Explain why cleanup matters @done(26-03-29 04:16)
 
 Collisions:
-    ☐ Get player and object bounds
-    ☐ Check rectangle overlap for collisions
-    ☐ Destroy object on collision and remove from array
-    ☐ Verify collisions visually
+    ✔ Get player and object bounds @done(26-03-29 05:03)
+    ✔ Check rectangle overlap for collisions @done(26-03-29 05:03)
+    ✔ Destroy object on collision and remove from array @done(26-03-29 05:03)
+    ✔ Verify collisions visually @done(26-03-29 05:03)
 
 UI & Score:
     ☐ Create score variable
