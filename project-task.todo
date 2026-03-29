@@ -1,29 +1,29 @@
 Project Setup:
-    ☐ setup initial project
-    ☐ review phaser boilerplate
-        ☐ phaser library
-        ☐ phaser game configuration
-        ☐ phaser scene
-    ☐ run project locally
-        ☐ vs code and live server extension
-        ☐ other options in readme
-        ☐ test in browser
+    ✔ setup initial project @done(26-03-29 03:08)
+    ✔ review phaser boilerplate @done(26-03-29 03:08)
+        ✔ phaser library @done(26-03-29 03:08)
+        ✔ phaser game configuration @done(26-03-29 03:08)
+        ✔ phaser scene @done(26-03-29 03:08)
+    ✔ run project locally @done(26-03-29 03:08)
+        ✔ vs code and live server extension @done(26-03-29 03:08)
+        ✔ other options in readme @done(26-03-29 03:08)
+        ✔ test in browser @done(26-03-29 03:08)
 
 Sprites & Coordinates:
-    ☐ loading assets
-    ☐ create image game objects
-    ☐ game coordinates
-    ☐ game object origin
-    ☐ add background and player
-    ☐ scaling
+    ✔ loading assets @done(26-03-29 03:08)
+    ✔ create image game objects @done(26-03-29 03:08)
+    ✔ game coordinates @done(26-03-29 03:08)
+    ✔ game object origin @done(26-03-29 03:08)
+    ✔ add background and player @done(26-03-29 03:08)
+    ✔ scaling @done(26-03-29 03:08)
 
 Player Movement:
-    ☐ Create player & player speed properties
-    ☐ Add keyboard input
-    ☐ Detect left/right keys
-    ☐ Move player in update()
-    ☐ Clamp player within screen bounds
-    ☐ Test smooth movement
+    ✔ Create player & player speed properties @done(26-03-29 03:41)
+    ✔ Add keyboard input @done(26-03-29 03:41)
+    ✔ Detect left/right keys @done(26-03-29 03:41)
+    ✔ Move player in update() @done(26-03-29 03:41)
+    ✔ Clamp player within screen bounds @done(26-03-29 03:41)
+    ✔ Test smooth movement @done(26-03-29 03:41)
 
 Falling Objects:
     ☐ Spawn falling objects on a timer
