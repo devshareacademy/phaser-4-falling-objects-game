@@ -26,11 +26,11 @@ Player Movement:
     ✔ Test smooth movement @done(26-03-29 03:41)
 
 Falling Objects:
-    ☐ Spawn falling objects on a timer
-    ☐ Random spawn locations
-    ☐ Add downward movement
-    ☐ Remove objects when off screen
-    ☐ Explain why cleanup matters
+    ✔ Spawn falling objects on a timer @done(26-03-29 04:16)
+    ✔ Random spawn locations @done(26-03-29 04:16)
+    ✔ Add downward movement @done(26-03-29 04:16)
+    ✔ Remove objects when off screen @done(26-03-29 04:16)
+    ✔ Explain why cleanup matters @done(26-03-29 04:16)
 
 Collisions:
     ☐ Get player and object bounds
