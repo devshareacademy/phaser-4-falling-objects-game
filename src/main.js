@@ -5,13 +5,13 @@ import { PreloadScene } from './scenes/preload-scene.js';
 
 /** @type {Phaser.Types.Core.GameConfig} */
 const gameConfig = {
-  type: Phaser.CANVAS,
-  pixelArt: true,
-  roundPixels: true,
+  type: Phaser.AUTO,
+  pixelArt: false,
+  title: 'Crafty Catch',
   scale: {
     parent: 'game-container',
-    width: 640,
-    height: 480,
+    width: 1280,
+    height: 720,
     autoCenter: Phaser.Scale.CENTER_BOTH,
     mode: Phaser.Scale.FIT,
   },

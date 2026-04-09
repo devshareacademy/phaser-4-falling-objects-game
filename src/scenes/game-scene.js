@@ -2,11 +2,60 @@ import Phaser from '../lib/phaser.js';
 import { SCENE_KEYS } from '../common/scene-keys.js';
 import { ASSET_KEYS } from '../common/assets.js';
 
+const textConfig = {
+  fontSize: '40px',
+  color: '#043D8C',
+  stroke: '#ffffff',
+  strokeThickness: 6,
+};
+
 export class GameScene extends Phaser.Scene {
+  /** @type {Phaser.Types.Input.Keyboard.CursorKeys} handles player input */
+  #cursorKeys;
+  /** @type {Phaser.GameObjects.Image} the player (jar) in our game */
+  #player;
+  /** @type {number} how fast our player can move in our game */
+  #playerSpeed;
+  /** @type {Phaser.GameObjects.Image[]} the falling objects for the player to collect */
+  #fallingObjects;
+  /** @type {string[]} the list of frames from the falling object spritesheet that we loaded in */
+  #fallingObjectFrames;
+  /** @type {number} how fast the objects will fall */
+  #fallingObjectsSpeed;
+  /** @type {number} how many points the player has earned from collecting objects */
+  #score;
+  /** @type {Phaser.GameObjects.Text} the visual representation of the players score */
+  #scoreTextGameObject;
+  /** @type {number} how many times the player has missed collecting the falling objects */
+  #misses;
+  /** @type {number} how many misses before the game ends */
+  #maxMisses;
+  /** @type {boolean} tracks if the game over */
+  #isGameOver;
+  /** @type {Phaser.Time.TimerEvent} timer for spawning objects in the game */
+  #timerEvent;
+  /** @type {Phaser.GameObjects.Text} the visual representation of the players lives */
+  #livesTextGameObject;
+
   constructor() {
     super({
       key: SCENE_KEYS.GAME_SCENE,
     });
+  }
+
+  /**
+   * @public
+   * Tied to the Phaser Scene lifecycle. Will run one time at start of the lifecycle.
+   *  Runs each time the Phaser Scene restarts.
+   * @returns {void}
+   */
+  init() {
+    this.#playerSpeed = 500;
+    this.#fallingObjectsSpeed = 200;
+    this.#score = 0;
+    this.#misses = 0;
+    this.#maxMisses = 3;
+    this.#isGameOver = false;
   }
 
   /**
@@ -16,7 +65,127 @@ export class GameScene extends Phaser.Scene {
    * @returns {void}
    */
   create() {
-    // show image we loaded in the preload scene
-    this.add.image(this.scale.width / 2, this.scale.height / 2, ASSET_KEYS.LOGO);
+    if (!this.input) {
+      console.warn('Input plugin is not available');
+      return;
+    }
+
+    // get scene width and height
+    const { width, height } = this.scale;
+
+    // add game background
+    this.add.image(width / 2, height / 2, ASSET_KEYS.BACKGROUND);
+    // add player
+    this.#player = this.add.image(width / 2, height, ASSET_KEYS.JAR).setDepth(1);
+
+    // adds support for keyboard input in our game (arrow keys, enter, and shift)
+    this.#cursorKeys = this.input.keyboard.createCursorKeys();
+
+    // keep track of the falling objects the player collects
+    this.#fallingObjects = [];
+    this.#fallingObjectFrames = Object.keys(this.textures.get(ASSET_KEYS.OBJECTS).frames).filter(
+      (name) => name !== '__BASE', // base is a default frame added by phaser
+    );
+
+    // time event to spawn objects
+    this.#timerEvent = this.time.addEvent({
+      delay: 1000,
+      callback: this.#spawnFallingObject,
+      callbackScope: this,
+      loop: true,
+    });
+
+    // show player the score they have earned
+    const scoreTextPrefix = this.add.text(10, 10, 'Score:', textConfig);
+    this.#scoreTextGameObject = this.add.text(
+      scoreTextPrefix.x + scoreTextPrefix.width,
+      scoreTextPrefix.y,
+      `${this.#score}`,
+      textConfig,
+    );
+
+    const livesTextPrefix = this.add.text(10, 50, 'Lives:', textConfig);
+    this.#livesTextGameObject = this.add.text(
+      livesTextPrefix.x + livesTextPrefix.width,
+      livesTextPrefix.y,
+      `${this.#maxMisses - this.#misses}`,
+      textConfig,
+    );
+  }
+
+  /**
+   * @public
+   * Tied to the Phaser Scene lifecycle. Will run one multiple times per second (fps),
+   * or once for every tick of the game loop. Generally, Phaser will attempt to run
+   * this 60 times per second (fps), depends on hardware, browser, and game settings.
+   * @returns {void}
+   */
+  update(time, delta) {
+    if (this.#isGameOver) {
+      return;
+    }
+
+    // allow player to move
+    const moveStep = this.#playerSpeed * (delta / 1000);
+    if (this.#cursorKeys.left.isDown) {
+      this.#player.x -= moveStep;
+    } else if (this.#cursorKeys.right.isDown) {
+      this.#player.x += moveStep;
+    }
+
+    if (this.#player.x - this.#player.displayWidth / 2 < 0) {
+      this.#player.x = this.#player.displayWidth / 2;
+    } else if (this.#player.x + this.#player.displayWidth / 2 > this.scale.width) {
+      this.#player.x = this.scale.width - this.#player.displayWidth / 2;
+    }
+
+    // move the objects down the screen and remove them when they are off screen
+    for (let i = this.#fallingObjects.length - 1; i >= 0; i--) {
+      const obj = this.#fallingObjects[i];
+      obj.y += this.#fallingObjectsSpeed * (delta / 1000);
+
+      // check to see if object overlaps with player
+      const overlapPoints = Phaser.Geom.Intersects.GetRectangleToRectangle(this.#player.getBounds(), obj.getBounds());
+      // object is overlapping
+      if (overlapPoints.length > 0) {
+        obj.destroy();
+        this.#fallingObjects.splice(i, 1);
+        // update players score for each object collected
+        this.#score += 10;
+        this.#scoreTextGameObject.setText(`${this.#score}`);
+        continue;
+      }
+
+      if (obj.y > this.scale.height) {
+        obj.destroy();
+        this.#fallingObjects.splice(i, 1);
+        // increment the number of misses for the player
+        this.#misses += 1;
+        this.#livesTextGameObject.setText(`${this.#maxMisses - this.#misses}`);
+      }
+    }
+
+    // if we have reached maxed misses, end the game
+    if (this.#misses >= this.#maxMisses) {
+      this.#handleGameOver();
+    }
+  }
+
+  #spawnFallingObject() {
+    const randomFrame = Phaser.Utils.Array.GetRandom(this.#fallingObjectFrames);
+    const obj = this.add
+      .image(Phaser.Math.RND.between(50, this.scale.width - 50), 0, ASSET_KEYS.OBJECTS, randomFrame)
+      .setScale(0.75);
+    this.#fallingObjects.push(obj);
+    // console.log(this.#fallingObjects.length);
+  }
+
+  #handleGameOver() {
+    this.#isGameOver = true;
+    this.#timerEvent.remove();
+    this.add.text(this.scale.width / 2, this.scale.height / 2, 'Game Over', textConfig).setOrigin(0.5);
+    this.input.once(Phaser.Input.Events.POINTER_DOWN, () => {
+      this.scene.restart();
+    });
   }
 }

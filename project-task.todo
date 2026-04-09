@@ -1,0 +1,56 @@
+Project Setup:
+    ✔ setup initial project @done(26-03-29 03:08)
+    ✔ review phaser boilerplate @done(26-03-29 03:08)
+        ✔ phaser library @done(26-03-29 03:08)
+        ✔ phaser game configuration @done(26-03-29 03:08)
+        ✔ phaser scene @done(26-03-29 03:08)
+    ✔ run project locally @done(26-03-29 03:08)
+        ✔ vs code and live server extension @done(26-03-29 03:08)
+        ✔ other options in readme @done(26-03-29 03:08)
+        ✔ test in browser @done(26-03-29 03:08)
+
+Sprites & Coordinates:
+    ✔ loading assets @done(26-03-29 03:08)
+    ✔ create image game objects @done(26-03-29 03:08)
+    ✔ game coordinates @done(26-03-29 03:08)
+    ✔ game object origin @done(26-03-29 03:08)
+    ✔ add background and player @done(26-03-29 03:08)
+    ✔ scaling @done(26-03-29 03:08)
+
+Player Movement:
+    ✔ Create player & player speed properties @done(26-03-29 03:41)
+    ✔ Add keyboard input @done(26-03-29 03:41)
+    ✔ Detect left/right keys @done(26-03-29 03:41)
+    ✔ Move player in update() @done(26-03-29 03:41)
+    ✔ Clamp player within screen bounds @done(26-03-29 03:41)
+    ✔ Test smooth movement @done(26-03-29 03:41)
+
+Falling Objects:
+    ✔ Spawn falling objects on a timer @done(26-03-29 04:16)
+    ✔ Random spawn locations @done(26-03-29 04:16)
+    ✔ Add downward movement @done(26-03-29 04:16)
+    ✔ Remove objects when off screen @done(26-03-29 04:16)
+    ✔ Explain why cleanup matters @done(26-03-29 04:16)
+
+Collisions:
+    ✔ Get player and object bounds @done(26-03-29 05:03)
+    ✔ Check rectangle overlap for collisions @done(26-03-29 05:03)
+    ✔ Destroy object on collision and remove from array @done(26-03-29 05:03)
+    ✔ Verify collisions visually @done(26-03-29 05:03)
+
+UI & Score:
+    ✔ Create score variable @done(26-03-29 05:19)
+    ✔ Add score text to screen @done(26-03-29 05:19)
+    ✔ Increase score on catch @done(26-03-29 05:19)
+    ✔ Update UI text when score changes @done(26-03-29 05:19)
+    ✔ Position score on screen @done(26-03-29 05:19)
+    ✔ Verify UI updates correctly @done(26-03-29 05:19)
+
+Game Rules:
+    ✔ Create miss counter @done(26-03-29 05:45)
+    ✔ Define max misses @done(26-03-29 05:45)
+    ✔ Increase misses when objects fall @done(26-03-29 05:45)
+    ✔ Check for game over @done(26-03-29 05:45)
+    ✔ Stop gameplay when game over @done(26-03-29 05:45)
+    ✔ Display game over message @done(26-03-29 05:45)
+    ✔ Add restart scene logic @done(26-03-29 05:45)
