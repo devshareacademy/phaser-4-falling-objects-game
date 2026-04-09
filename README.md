@@ -1,10 +1,21 @@
-# Phaser 4 - Basic JS Template
+# Phaser 4 - Falling Objects
 
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-A barebones project template for getting started with [Phaser 4](https://github.com/photonstorm/phaser) using JavaScript.
+A simple falling objects game created with Phaser 4!
 
 **Phaser Version:** `4.0.0 RC4`
+
+## Demo
+
+You can find a playable demo of the game here: <a href="https://scottwestover.dev/games/phaser-4-falling-objects/index.html" target="_blank">Falling Objects</a>
+
+![Game play Screenshot](/docs/screenshot1.png?raw=true 'Screenshot 1')
+![Game play Demo](/docs/demo.gif?raw=true 'Demo')
+
+## How To Play
+
+Move the basket left and right with the Left and Right arrow keys, and try to catch as many falling candies as possible to get the high score.
 
 ## Requirements
 
@@ -37,7 +48,7 @@ bash scripts/bundle.sh
 
 This will create a `dist` folder containing your game. The contents of this folder can then be uploaded to any static web hosting service. The script will exclude the `src/types` directory from the final bundle.
 
-## Customizing Template
+## Customizing Code
 
 ### VS Code Settings
 
@@ -47,14 +58,25 @@ The `.vscode` folder contains recommended extensions and settings for this proje
 
 Any static assets like images or audio files should be placed in the `assets` folder. They can then be loaded into your game.
 
-## Changelog
-
-This project uses the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format. You can view the changelog here: [Changelog](CHANGELOG.md).
-
 ## Issues
 
-If you encounter any issues, please open a new [GitHub Issue](https://github.com/devshareacademy/phaser-4-basic-js-template/issues) on your project's repository.
+If you encounter any issues, please open a new [GitHub Issue](https://github.com/devshareacademy/phaser-4-falling-objects-game/issues) on your project's repository.
 
 ## Questions, Comments, and Suggestions
 
-If you have any questions, comments, or suggestions, please feel free to open a new [GitHub Discussion](https://github.com/devshareacademy/phaser-4-basic-js-template/discussions) on your project's repository.
+If you have any questions, comments, or suggestions, please feel free to open a new [GitHub Discussion](https://github.com/devshareacademy/phaser-4-falling-objects-game/discussions) on your project's repository.
+
+## Credits
+
+This project would not have been possible without the art provided by the following people:
+
+| Asset         | Artist             | Source                                                                                                                                                                         |
+| ------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Background    | Sirirat Changhuana | <a href="https://www.vecteezy.com/vector-art/3228081-abstract-art-fabric-background-with-grunge-texture" target="_blank">Vecteezy - Background</a>                             |
+| Blue Thread   | Timplaru Emil      | <a href="https://www.vecteezy.com/png/9380294-thread-spool-clipart-design-illustration" target="_blank">Vecteezy Blue Thread Spool</a>                                         |
+| Red Thread    | Timplaru Emil      | <a href="https://www.vecteezy.com/png/9379855-thread-spool-clipart-design-illustration" target="_blank">Vecteezy Red Thread Spool</a>                                          |
+| Yellow Thread | Timplaru Emil      | <a href="https://www.vecteezy.com/png/9304579-thread-spool-clipart-design-illustration" target="_blank">Vecteezy Yellow Thread Spool</a>                                       |
+| Green Thread  | Timplaru Emil      | <a href="https://www.vecteezy.com/png/9302635-thread-spool-clipart-design-illustration" target="_blank">Vecteezy Green Thread Spool</a>                                        |
+| Needles       | Timplaru Emil      | <a href="https://www.vecteezy.com/vector-art/2006420-sewing-needles-and-pins-vector-design-illustration-set-isolated-on-white-background" target="_blank">Vecteezy Needles</a> |
+| Buttons       | Timplaru Emil      | <a href="https://www.vecteezy.com/vector-art/2006103-clothing-buttons-vector-design-illustration-set-isolated-on-white-background" target="_blank">Vecteezy Buttons</a>        |
+| Jar           | Timplaru Emil      | <a href="https://www.vecteezy.com/png/9304861-empty-glass-jar-clipart-design-illustration" target="_blank">Jar</a>                                                             |
