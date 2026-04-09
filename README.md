@@ -6,6 +6,10 @@ A simple falling objects game created with Phaser 4!
 
 **Phaser Version:** `4.0.0 RC4`
 
+This repo is the official code repository for the <a href="https://youtube.com/playlist?list=PLmcXe0-sfoSheQinG8d5JQBiTqiKnBgo7&si=L1rLI2T5vmZdml2F" target="_blank">Build Your First Game with Phaser 4</a> free course that is available on YouTube.
+
+[<img src="docs/studio_square_thumbnail.jpg">](https://youtube.com/playlist?list=PLmcXe0-sfoSheQinG8d5JQBiTqiKnBgo7&si=L1rLI2T5vmZdml2F 'Build Your First Game with Phaser 4')
+
 ## Demo
 
 You can find a playable demo of the game here: <a href="https://scottwestover.dev/games/phaser-4-falling-objects/index.html" target="_blank">Falling Objects</a>
