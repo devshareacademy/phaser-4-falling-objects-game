@@ -4,7 +4,7 @@
 
 A simple falling objects game created with Phaser 4!
 
-**Phaser Version:** `4.0.0`
+**Phaser Version:** `4.1.0`
 
 This repo is the official code repository for the <a href="https://youtube.com/playlist?list=PLmcXe0-sfoSheQinG8d5JQBiTqiKnBgo7&si=L1rLI2T5vmZdml2F" target="_blank">Build Your First Game with Phaser 4</a> free course that is available on YouTube.
 
